@@ -1,0 +1,247 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Calculator_Can_KESKIN.MainWindow"
+        Title="Calculator_Can_KESKIN"
+        Width="400"
+        Height="700"
+        MinWidth="300"
+        MinHeight="500"
+        Background="#000000"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Styles>
+
+        <!-- BOUTONS -->
+
+        <Style Selector="Button">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="CornerRadius" Value="180"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
+
+        <Style Selector="Button.number">
+            <Setter Property="Background" Value="#333333"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <Style Selector="Button.number:pointerover">
+            <Setter Property="Background" Value="#4A4A4A"/>
+        </Style>
+
+        <Style Selector="Button.function">
+            <Setter Property="Background" Value="#A5A5A5"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+
+        <Style Selector="Button.function:pointerover">
+            <Setter Property="Background" Value="#C7C7C7"/>
+        </Style>
+
+        <Style Selector="Button.operator">
+            <Setter Property="Background" Value="#FF9500"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="28"/>
+        </Style>
+
+        <Style Selector="Button.operator:pointerover">
+            <Setter Property="Background" Value="#FFB340"/>
+        </Style>
+
+        <Style Selector="Button.operator.active">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="#FF9F0A"/>
+        </Style>
+
+        <!-- AFFICHAGE -->
+
+        <Style Selector="TextBlock.display">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="64"/>
+            <Setter Property="FontWeight" Value="Light"/>
+        </Style>
+
+        <Style Selector="TextBlock.operation">
+            <Setter Property="Foreground" Value="#666666"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+    </Window.Styles>
+
+
+    <Grid RowDefinitions="*,Auto"
+          Margin="16">
+
+        <!-- ZONE D'AFFICHAGE -->
+
+        <Grid Grid.Row="0"
+              RowDefinitions="Auto,*,Auto"
+              Margin="4,10,4,15">
+
+            <!-- Opération en cours -->
+            <TextBlock x:Name="OperationText"
+                       Grid.Row="1"
+                       Text=""
+                       Classes="operation"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Bottom"
+                       TextWrapping="NoWrap"
+                       Margin="0,0,4,4"/>
+
+            <!-- Nombre -->
+            <TextBlock x:Name="DisplayText"
+                       Grid.Row="2"
+                       Text="0"
+                       Classes="display"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Bottom"
+                       TextWrapping="NoWrap"
+                       Margin="0,0,2,0"/>
+
+        </Grid>
+
+
+        <!-- CLAVIER -->
+
+        <Grid Grid.Row="1"
+              RowDefinitions="*,*,*,*,*"
+              ColumnDefinitions="*,*,*,*"
+              RowSpacing="10"
+              ColumnSpacing="10">
+
+            <!-- Ligne 1 -->
+
+            <Button Grid.Row="0"
+                    Grid.Column="0"
+                    Content="AC"
+                    Classes="function"
+                    Click="Button_Click"/>
+
+            <Button Grid.Row="0"
+                    Grid.Column="1"
+                    Content="+/−"
+                    Classes="function"
+                    Click="Button_Click"/>
+
+            <Button Grid.Row="0"
+                    Grid.Column="2"
+                    Content="%"
+                    Classes="function"
+                    Click="Button_Click"/>
+
+            <Button x:Name="DivideButton"
+                    Grid.Row="0"
+                    Grid.Column="3"
+                    Content="÷"
+                    Classes="operator"
+                    Click="Button_Click"/>
+
+
+            <!-- Ligne 2 -->
+
+            <Button Grid.Row="1"
+                    Grid.Column="0"
+                    Content="7"
+                    Classes="number"
+                    Click="Button_Click"/>
+
+            <Button Grid.Row="1"
+                    Grid.Column="1"
+                    Content="8"
+                    Classes="number"
+                    Click="Button_Click"/>
+
+            <Button Grid.Row="1"
+                    Grid.Column="2"
+                    Content="9"
+                    Classes="number"
+                    Click="Button_Click"/>
+
+            <Button Grid.Row="1"
+                    Grid.Column="3"
+                    Content="×"
+                    Classes="operator"
+                    Click="Button_Click"/>
+
+
+            <!-- Ligne 3 -->
+
+            <Button Grid.Row="2"
+                    Grid.Column="0"
+                    Content="4"
+                    Classes="number"
+                    Click="Button_Click"/>
+
+            <Button Grid.Row="2"
+                    Grid.Column="1"
+                    Content="5"
+                    Classes="number"
+                    Click="Button_Click"/>
+
+            <Button Grid.Row="2"
+                    Grid.Column="2"
+                    Content="6"
+                    Classes="number"
+                    Click="Button_Click"/>
+
+            <Button Grid.Row="2"
+                    Grid.Column="3"
+                    Content="−"
+                    Classes="operator"
+                    Click="Button_Click"/>
+
+
+            <!-- Ligne 4 -->
+
+            <Button Grid.Row="3"
+                    Grid.Column="0"
+                    Content="1"
+                    Classes="number"
+                    Click="Button_Click"/>
+
+            <Button Grid.Row="3"
+                    Grid.Column="1"
+                    Content="2"
+                    Classes="number"
+                    Click="Button_Click"/>
+
+            <Button Grid.Row="3"
+                    Grid.Column="2"
+                    Content="3"
+                    Classes="number"
+                    Click="Button_Click"/>
+
+            <Button Grid.Row="3"
+                    Grid.Column="3"
+                    Content="+"
+                    Classes="operator"
+                    Click="Button_Click"/>
+
+
+            <!-- Ligne 5 -->
+
+            <Button Grid.Row="4"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Content="0"
+                    Classes="number"
+                    Click="Button_Click"/>
+
+            <Button Grid.Row="4"
+                    Grid.Column="2"
+                    Content="."
+                    Classes="number"
+                    Click="Button_Click"/>
+
+            <Button Grid.Row="4"
+                    Grid.Column="3"
+                    Content="="
+                    Classes="operator"
+                    Click="Button_Click"/>
+
+        </Grid>
+
+    </Grid>
+
+</Window>
